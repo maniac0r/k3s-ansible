@@ -1,7 +1,6 @@
 # ENV['VAGRANT_NO_PARALLEL'] = 'no'
 NODE_ROLES = ["server-0", "server-1", "server-2", "agent-0", "agent-1"]
-NODE_BOXES = ['generic/ubuntu2004', 'generic/ubuntu2004', 'generic/ubuntu2004', 'generic/ubuntu2004', 'generic/ubuntu2004']
-NODE_CPUS = 2
+NODE_BOXES = ['boxomatic/debian-13', 'boxomatic/debian-13', 'boxomatic/debian-13', 'boxomatic/debian-13', 'boxomatic/debian-13']NODE_CPUS = 2
 NODE_MEMORY = 2048
 # Virtualbox >= 6.1.28 require `/etc/vbox/network.conf` for expanded private networks 
 NETWORK_PREFIX = "10.10.10"
@@ -60,5 +59,8 @@ Vagrant.configure("2") do |config|
       provision(node.vm, name, i)
     end
   end
+
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
 
 end
